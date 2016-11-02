@@ -1,2 +1,6 @@
-Compilation started at 13:37:249 on 31/10/16.
-     > Compilation Started
+Compilation started at 19:29:657 on 02/11/16.
+     > SBL Interpreter Started
+     > 'test' at line 1 column 5 in file main.sbl
+     > 'code' at line 1 column 10 in file main.sbl
+     > 'Hello' at line 3 column 7 in file main.sbl
+     > 'World' at line 4 column 8 in file main.sbl
