@@ -3,7 +3,14 @@ package com.shellbytes.sbl.token;
 public class Token {
 
 	public enum TokenType {
-		IDENTIFIER
+		KEYWORD,
+		IDENTIFIER,
+		STRING,
+		
+		PARENTH_OPEN,
+		PARENTH_CLOSE,
+		
+		SEMICOLON
 	}
 	
 	private String contents;
@@ -24,7 +31,7 @@ public class Token {
 	
 	@Override
 	public String toString() {
-		return "'" + contents + "'" + " at line "
+		return "'" + contents + "'" + "\t\ttype " + type.toString() + " at line "
 				+ Integer.toString(line) + " column "
 				+ Integer.toString(column) + " in file " + fname;
 	}

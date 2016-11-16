@@ -68,6 +68,15 @@ public class Messages {
 		System.exit(-1);
 	}
 	
+	public static void out(String message) {
+		System.out.println(message);
+		IO.appendTextFile(fname, message);
+	}
+	
+	public static void line() {
+		out("");
+	}
+	
 	public static void err(String message, Exception e) {
 		e.printStackTrace();
 		

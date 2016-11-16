@@ -1,4 +1,1 @@
-test code
-
-	Hello
-  World
+print("Hello World!");
