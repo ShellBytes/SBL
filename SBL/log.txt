@@ -1,4 +1,4 @@
-Compilation started at 18:00:854 on 16/11/16.
+Compilation started at 17:34:334 on 17/11/16.
      > SBL Interpreter Started
 
      > Reading main.sbl...
@@ -6,7 +6,13 @@ Compilation started at 18:00:854 on 16/11/16.
      > Building into statements...
      > Instantiating environment...
 
-     > Building finished in 32ms
+
+     > Reading took 24ms
+     > Tokenising took 38ms
+     > Statement Building took 11ms
+     > Environment Instantiation took 7ms
+
+     > Full build finished in 80ms
      > -----Running Program-----
 
 Hello World!

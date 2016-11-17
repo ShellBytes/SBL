@@ -23,17 +23,27 @@ public class Main {
 		Messages.log("Reading " + fname + "...");
 		String code = IO.readTextFile(fname);
 		
+		Instant postRead = Instant.now();
 		Messages.log("Tokenising file...");
 		ArrayList<Token> tokens = Tokeniser.tokenise(code, fname);
 		
+		Instant postTokenise = Instant.now();
 		Messages.log("Building into statements...");
 		ArrayList<Statement> statements = StatementBuilder.build(tokens);
 		
+		Instant postStatement = Instant.now();
 		Messages.log("Instantiating environment...\n");
 		Environment env = new Environment();
 		
 		Instant end = Instant.now();
-		Messages.log("Building finished in " + Duration.between(start, end).toMillis() + "ms");
+		Messages.line();
+		Messages.log("Reading took " + Duration.between(start, postRead).toMillis() + "ms");
+		Messages.log("Tokenising took " + Duration.between(postRead, postTokenise).toMillis() + "ms");
+		Messages.log("Statement Building took " + Duration.between(postTokenise, postStatement).toMillis() + "ms");
+		Messages.log("Environment Instantiation took " + Duration.between(postStatement, end).toMillis() + "ms");
+		Messages.line();
+		Messages.log("Full build finished in " + Duration.between(start, end).toMillis() + "ms");
+		Messages.line();
 		
 		Messages.log("-----Running Program-----\n");
 		
