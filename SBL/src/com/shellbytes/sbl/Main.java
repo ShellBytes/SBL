@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.shellbytes.sbl.environment.Environment;
 import com.shellbytes.sbl.statement.Statement;
+import com.shellbytes.sbl.statement.StatementBlock;
 import com.shellbytes.sbl.statement.StatementBuilder;
 import com.shellbytes.sbl.token.Token;
 import com.shellbytes.sbl.token.Tokeniser;
@@ -30,6 +31,8 @@ public class Main {
 		Instant postTokenise = Instant.now();
 		Messages.log("Building into statements...");
 		ArrayList<Statement> statements = StatementBuilder.build(tokens);
+		StatementBlock mainBlock = new StatementBlock();
+		mainBlock.addStatements(statements);
 		
 		Instant postStatement = Instant.now();
 		Messages.log("Instantiating environment...\n");
@@ -47,9 +50,7 @@ public class Main {
 		
 		Messages.log("-----Running Program-----\n");
 		
-		for (Statement st : statements) {
-			st.exec(env);
-		}
+		mainBlock.exec(env);
 		
 		Messages.line();
 		Messages.log("-----Program Finished-----");

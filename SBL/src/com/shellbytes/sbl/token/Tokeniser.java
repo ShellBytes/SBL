@@ -8,7 +8,7 @@ import com.shellbytes.sbl.token.Token.TokenType;
 public class Tokeniser {
 
 	public static final char[] DELIMITERS = {
-			' ', '\t', '\n', '\0',
+			' ', '\t', '\n', '\r', '\0',
 			'(', ')', ';',
 			'"', '\\',
 			'#'

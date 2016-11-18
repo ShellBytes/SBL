@@ -10,7 +10,8 @@ public class Statement {
 
 	public enum StatementType {
 		NONE,
-		FUNCTION
+		FUNCTION,
+		BLOCK
 	}
 	
 	private ArrayList<Token> tokens;
