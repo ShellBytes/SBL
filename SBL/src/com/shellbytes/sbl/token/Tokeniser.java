@@ -9,7 +9,7 @@ public class Tokeniser {
 
 	public static final char[] DELIMITERS = {
 			' ', '\t', '\n', '\r', '\0',
-			'(', ')', ';',
+			'(', ')', ';', '=',
 			'"', '\\',
 			'#'
 	};
@@ -52,7 +52,7 @@ public class Tokeniser {
 					} else {
 						switch (currentToken) {
 						case "print":
-							tokens.add(new Token(currentToken, line, column, fname, TokenType.KEYWORD));
+							tokens.add(new Token(currentToken, line, column, fname, TokenType.KWD_PRINT));
 							break;
 						default:
 							tokens.add(new Token(currentToken, line, column, fname, TokenType.IDENTIFIER));		
@@ -65,6 +65,8 @@ public class Tokeniser {
 						tokens.add(new Token(")", line, column, fname, TokenType.PARENTH_CLOSE));
 					} else if (c == ';') {
 						tokens.add(new Token(";", line, column, fname, TokenType.SEMICOLON));
+					} else if (c == '=') {
+						tokens.add(new Token("=", line, column, fname, TokenType.EQUALS));
 					} else if (c == '"') {
 						parsingString = true;
 					} else if (c == '#') {

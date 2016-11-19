@@ -25,6 +25,11 @@ public class Variable {
 		return type == this.type;
 	}
 	
+	public void setContents(String contents) {
+		stringVal = contents;
+		type = VariableType.STRING;
+	}
+	
 	public Object getContents() {
 		switch (type) {
 		case STRING:

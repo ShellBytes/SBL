@@ -3,12 +3,13 @@ package com.shellbytes.sbl.token;
 public class Token {
 
 	public enum TokenType {
-		KEYWORD,
+		KWD_PRINT,
 		IDENTIFIER,
 		STRING,
 		
 		PARENTH_OPEN,
 		PARENTH_CLOSE,
+		EQUALS,
 		
 		SEMICOLON
 	}

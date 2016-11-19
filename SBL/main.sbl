@@ -1,2 +1,3 @@
-print("Hello World!");
-print("2nd test print statement.");
+name = "SBL";
+print("Hello! This language is called ");
+print(name);

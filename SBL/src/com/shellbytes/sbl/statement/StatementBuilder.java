@@ -2,8 +2,10 @@ package com.shellbytes.sbl.statement;
 
 import java.util.ArrayList;
 
+import com.shellbytes.sbl.Messages;
 import com.shellbytes.sbl.statement.Statement.StatementType;
 import com.shellbytes.sbl.token.Token;
+import com.shellbytes.sbl.token.Token.TokenType;
 
 public class StatementBuilder {
 
@@ -14,16 +16,36 @@ public class StatementBuilder {
 				
 		for (int i=0; i<tokens.size(); i++) {
 			
-			currentTokens.add(tokens.get(i));
+			Token currentToken = tokens.get(i);
+			currentTokens.add(currentToken);
 			
-			switch (StatementMatcher.match(currentTokens)) {
+			if (currentToken.getType() != TokenType.SEMICOLON)
+				continue;
+			
+			StatementType currentType = StatementMatcher.match(currentTokens); 
+			switch (currentType) {
+			
 			case FUNCTION:
-				statements.add(new Statement(currentTokens, StatementType.FUNCTION));
+			case ASSIGNMENT:
+				statements.add(new Statement(currentTokens, currentType));
 				currentTokens = new ArrayList<>();
 				break;
+				
 			default:
+				String str = "Invalid statement: ";
+				for (Token tk : currentTokens)
+					str += "\n" + tk.toString();
+				str += "\nMaybe this is two statements without a semicolon between them?";
+				Messages.err(str);
 				break;
 			}
+		}
+		
+		if (!currentTokens.isEmpty()) {
+			String str = "Unexpected EOF: token list not empty: ";
+			for (Token tk : tokens)
+				str += "\n" + tk.toString();
+			Messages.err(str);
 		}
 		
 		return statements;
